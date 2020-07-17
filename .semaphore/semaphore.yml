@@ -23,9 +23,20 @@ blocks:
             - cache store
             - 'bundle exec rake db:setup'
             - 'bundle exec rake db:test:prepare'
-        - name: RSpec Tests
+    dependencies: []
+  - name: RSpec
+    dependencies:
+      - Test
+    task:
+      jobs:
+        - name: 'Job #1'
           commands:
             - bundle exec rspec
-        - name: Cucumber Tests
+  - name: Cucumber Test
+    dependencies:
+      - Test
+    task:
+      jobs:
+        - name: 'Job #1'
           commands:
             - bundle exec cucumber
